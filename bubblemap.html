@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <style>.active { fill: blue !important;}</style>
+    </head>
+    <body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="/dist/datamaps.world.min.js"></script>`
+<div id="container" style="position: relative; width: 1600px; height: 850px;"></div>
+<script>
+
+var map = new Datamap({
+	element: document.getElementById('container'),
+	scope: 'world',
+	fills: {
+		defaultFill: 'rgba(230,216,189,0.9)'
+	}
+});
+
+     var bombs = [{
+        radius: 2658/100,
+        yeild: 2658,
+        country: 'Afghanistan',
+        fillKey: 'RUS',
+        latitude: 33,
+        longitude: 65
+      },{
+        radius: 1042/100,
+        yeild: 1042,
+        country: 'Bangladesh',
+        fillKey: 'RUS',
+        latitude: 24,
+        longitude: 90
+
+      },{
+        radius: 48/100,
+        yeild: 48,
+        country: 'Burkina Faso',
+        fillKey: 'RUS',
+        latitude: 13,
+        longitude: -2
+      },{
+        radius: 46/100,
+        yeild: 46,
+        country: 'Burundi',
+        fillKey: 'RUS',
+        latitude: -3.5,
+        longitude: 30
+      },{
+        radius: 5971/100,
+        yeild: 5971,
+        country: 'CAR',
+        fillKey: 'RUS',
+        latitude: 7,
+        longitude: 21
+      }
+    ];
+//draw bubbles for bombs
+map.bubbles(bombs, {
+    popupTemplate: function (geo, data) { 
+            return ['<div class="hoverinfo">' ,
+            'Admissions: ' +  data.yeild ,
+            '<br/>Country: ' +  data.country + '',
+            '</div>'].join('');
+    }
+});
+
+
+</script>
+
+
+    </body>
+</html>
