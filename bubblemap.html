@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <style>.active { fill: blue !important;}</style>
+        <style>.active { fill: blue !important;}
+
+.hoverinfo {
+    font-weight: bold;}
+
+</style>
     </head>
     <body>
 
@@ -11,61 +16,278 @@
 <div id="container" style="position: relative; width: 1600px; height: 850px;"></div>
 <script>
 
-var map = new Datamap({
+var Map = new Datamap({
 	element: document.getElementById('container'),
 	scope: 'world',
+    geographyConfig: {
+        popupOnHover: false,
+        highlightOnHover: false,
+    },
 	fills: {
-		defaultFill: 'rgba(230,216,189,0.9)'
-	}
-});
+        l1: '#efd3d2',
+        l2: '#f47272',
+        l3: '#e22634',
+        l4: '#bc1c28',
+        l5: '#96101b',
+        l6: '#740808',
+		defaultFill: '#adadad'
+	},
+    data: {
+        'CMR': {
+            fillKey: 'l1', 
+            country: 'Cameroon', 
+            admissions: '12312', 
+            kwashiorkor: '34'
+        },
+        'BFA': {
+            fillKey: 'l1', 
+            country: 'Burkina Faso', 
+            admissions: '1042', 
+            kwashiorkor: '4.2'
+        },
+        'BDI': {
+            fillKey: 'l1',
+            "country":"Bangladesh",
+            "admissions":1042,
+            "lat":24,
+            "long":90,
+            "kwashiorkor":0
+        },
+        'GIN': {
+            fillKey: 'l1',
+            "country":"Guinea",
+            "admissions":331,
+            "lat":11,
+            "long":-10,
+            "kwashiorkor":0
+        },
+        'HTI': {
+            fillKey: 'l1', 
+            "country":"Haiti",
+            "admissions":116,
+            "lat":19,
+            "long":-72.4167,
+            "kwashiorkor":0
+        },
+        'IRQ': {
+            fillKey: 'l1',
+            "country":"Iraq",
+            "admissions":106,
+            "lat":33,
+            "long":44,
+            "kwashiorkor":0
+        },
+        'JOR': {
+            fillKey: 'l1', 
+            "country":"Jordan",
+            "admissions":121,
+            "lat":31,
+            "long":36,
+            "kwashiorkor":1.7
+        },
+        'MDG': {
+            fillKey: 'l1', 
+            "country":"Madagascar",
+            "admissions":194,
+            "lat":-20,
+            "long":47,
+            "kwashiorkor":0
+        },
+        'MMR': {
+            fillKey: 'l1',
+            "country":"Myanmar",
+            "admissions":669,
+            "lat":22,
+            "long":98,
+            "kwashiorkor":0
+        },
+        'PHL': {
+            fillKey: 'l1',    
+            "country":"Phillipines",
+            "admissions":5,
+            "lat":13,
+            "long":122,
+            "kwashiorkor":0
+        },
+        'SLE': {
+            fillKey: 'l1',
+            "country":"Sierre Leone",
+            "admissions":509,
+            "lat":8.5,
+            "long":-11.5,
+            "kwashiorkor":0
+        },
+        'SYR': {
+            fillKey: 'l1', 
+            "country":"Syria",
+            "admissions":71,
+            "lat":35,
+            "long":38,
+            "kwashiorkor":0
+        },
+        'UGA': {
+            fillKey: 'l1',     
+            "country":"Uganda",
+            "admissions":179,
+            "lat":1,
+            "long":32,
+            "kwashiorkor":11.7
+        },
+        'ZWE': {
+            fillKey: 'l1',     
+            "country":"Zimbabwe",
+            "admissions":183,
+            "lat":-20,
+            "long":30,
+            "kwashiorkor":0
+        },
+        'NGA': {
+            fillKey: 'l1',    
+            "country":"Nigeria",
+            "admissions":1052,
+            "lat":10,
+            "long":8,
+            "kwashiorkor":0
+        },
+        'IND': {
+            fillKey: 'l2',     
+            "country":"India",
+            "admissions":2706,
+            "lat":20,
+            "long":77,
+            "kwashiorkor":0.8
+        },
+        'ETH': {
+            fillKey: 'l2',     
+            "country":"Ethiopia",
+            "admissions":4711,
+            "lat":8,
+            "long":38,
+            "kwashiorkor":0.76
+        },
+        'AFG': {
+            fillKey: 'l2',     
+            "country":"Afghanistan",
+            "admissions":2658,
+            "lat":33,
+            "long":65,
+            "kwashiorkor":0
+        },
+        'BGD': {
+            fillKey: 'l2',     
+            "country":"Bangladesh",
+            "admissions":1042,
+            "lat":24,
+            "long":90,
+            "kwashiorkor":0
+        },
+        'KEN': {
+            fillKey: 'l2',     
+            "country":"Kenya",
+            "admissions":3791,
+            "lat":1,
+            "long":38,
+            "kwashiorkor":0
+        },
+        'MRT': {
+            fillKey: 'l2',     
+            "country":"Mauritania",
+            "admissions":3860,
+            "lat":20,
+            "long":-12,
+            "kwashiorkor":0
+        },
+        'SDN': {
+            fillKey: 'l2',    
+            "country":"Sudan",
+            "admissions":2428,
+            "lat":15,
+            "long":30,
+            "kwashiorkor":0.98
+        },
+        'CAF': {
+            fillKey: 'l3',     
+            "country":"CAR",
+            "admissions":5971,
+            "lat":7,
+            "long":21,
+            "kwashiorkor":17
+        },
+        'PAK': {
+            fillKey: 'l4',     
+            "country":"Pakistan",
+            "admissions":12147,
+            "lat":30,
+            "long":70,
+            "kwashiorkor":0
+        },
+        'SOM': {
+            fillKey: 'l4',     
+            "country":"Somalia",
+            "admissions":15563,
+            "lat":10,
+            "long":49,
+            "kwashiorkor":0.2
+        },
+        'SDS': {
+            fillKey: 'l4',     
+            "country":"South Sudan",
+            "admissions":18125,
+            "lat":4.8,
+            "long":31.6,
+            "kwashiorkor":0.96
+        },
+        'MLI': {
+            fillKey: 'l4',     
+            "country":"Mali",
+            "admissions":10077,
+            "lat":17,
+            "long":-4,
+            "kwashiorkor":19
+        },
+        'TCD': {
+            fillKey: 'l5',     
+            "country":"Chad",
+            "admissions":21153,
+            "lat":15,
+            "long":19,
+            "kwashiorkor":0.16
+        },
+        'COD': {
+            fillKey: 'l5',    
+            "country":"DRC",
+            "admissions":20506,
+            "lat":0,
+            "long":25,
+            "kwashiorkor":12.4
+        },
+        'NER': {
+            fillKey: 'l6',     
+            "country":"Niger",
+            "admissions":97261,
+            "lat":16,
+            "long":8,
+            "kwashiorkor":1.2
+        },
 
-     var bombs = [{
-        radius: 2658/100,
-        yeild: 2658,
-        country: 'Afghanistan',
-        fillKey: 'RUS',
-        latitude: 33,
-        longitude: 65
-      },{
-        radius: 1042/100,
-        yeild: 1042,
-        country: 'Bangladesh',
-        fillKey: 'RUS',
-        latitude: 24,
-        longitude: 90
-
-      },{
-        radius: 48/100,
-        yeild: 48,
-        country: 'Burkina Faso',
-        fillKey: 'RUS',
-        latitude: 13,
-        longitude: -2
-      },{
-        radius: 46/100,
-        yeild: 46,
-        country: 'Burundi',
-        fillKey: 'RUS',
-        latitude: -3.5,
-        longitude: 30
-      },{
-        radius: 5971/100,
-        yeild: 5971,
-        country: 'CAR',
-        fillKey: 'RUS',
-        latitude: 7,
-        longitude: 21
-      }
-    ];
-//draw bubbles for bombs
-map.bubbles(bombs, {
-    popupTemplate: function (geo, data) { 
-            return ['<div class="hoverinfo">' ,
-            'Admissions: ' +  data.yeild ,
-            '<br/>Country: ' +  data.country + '',
-            '</div>'].join('');
+    },
+    geographyConfig: {
+        popupTemplate: function(geo, data) {
+            return ['<div class="hoverinfo"<strong>' + data.country,
+            '<br/>Total Admissions: ' + data.admissions,
+            '<br/>Kwashiorkor: ' + data.kwashiorkor + '%',
+            '</strong></div>'].join(' ');
+        },
+        popupOnHover: true,
+        highlightFillColor: '#fff799',
+        highlightBorderColor: '#000000',
+        highlightBorderWidth:1,
+        dataUrl: null
     }
+
 });
+
+map.legend();
 
 
 </script>
