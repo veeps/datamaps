@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html>
+<title>2013 MSF Therapeutic Feeding Programs</title>
 <head>
         <style>.active { fill: blue !important;}
 
 .hoverinfo {
     font-weight: bold;}
+h2{
+    font: 100 50px "Helvetica Neue";
+}
+
 
 </style>
     </head>
     <body>
-
+<h2>2013 MSF THERAPEUTIC FEEDING PROGRAMS</h2>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="/dist/datamaps.world.min.js"></script>`
-<div id="container" style="position: relative; width: 1600px; height: 850px;"></div>
+<script src="http://vivianpeng.com/datamaps/dist/datamaps.world.min.js"></script>
+<div id="container" style="position: relative; top: -20px;  width: 1200px; height: 550px;"></div>
 <script>
-
 var Map = new Datamap({
-	element: document.getElementById('container'),
-	scope: 'world',
+    element: document.getElementById('container'),
+    scope: 'world',
     geographyConfig: {
         popupOnHover: false,
         highlightOnHover: false,
     },
-	fills: {
+    fills: {
         l1: '#efd3d2',
         l2: '#f47272',
         l3: '#e22634',
         l4: '#bc1c28',
         l5: '#96101b',
         l6: '#740808',
-		defaultFill: '#adadad'
-	},
+        defaultFill: '#adadad'
+    },
     data: {
         'CMR': {
             fillKey: 'l1', 
@@ -272,22 +276,32 @@ var Map = new Datamap({
 
     },
     geographyConfig: {
-        popupTemplate: function(geo, data) {
-            return ['<div class="hoverinfo"<strong>' + data.country,
+        popupTemplate: function(geography, data) {
+            if (!data) return geography.properties.name;
+            return ['<div class="hoverinfo"<strong>' + geography.properties.name,
             '<br/>Total Admissions: ' + data.admissions,
             '<br/>Kwashiorkor: ' + data.kwashiorkor + '%',
             '</strong></div>'].join(' ');
         },
         popupOnHover: true,
-        highlightFillColor: '#fff799',
+        highlightFillColor: '#bcbddc',
         highlightBorderColor: '#000000',
         highlightBorderWidth:1,
         dataUrl: null
     }
-
 });
-
-map.legend();
+Map.legend({
+    legendTitle: "Total Admissions",
+    defaultFillName: "No Data", 
+    labels: {
+        l1: "0-1,000",
+        l2: "1,000-5,000",
+        l3: "5,000-10,000",
+        l4: "10,000-20,000",
+        l5: "20,000-25,0000",
+        l6: "25,000+",
+    }
+});
 
 
 </script>
